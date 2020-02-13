@@ -1,0 +1,109 @@
+/*============================================================================*/
+/*============================================================================*/
+/*============================================================================*/
+
+.top_container {
+  text-align: center;
+  border: 5px solid black;
+}
+
+.navbar_collapse {
+  text-align: center;
+  border: 3px solid yellow;
+}
+
+.home_tag {
+  text-align: center;
+  border: 3px solid green;
+}
+
+.home_page {
+  text-align: center;
+  border: 3px solid blue;
+}
+
+.home_background {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/*============================================================================*/
+/*============================================================================*/
+/*============================================================================*/
+
+.profileInfo {
+  text-align: center;
+}
+
+.userInfo {
+  border: 3px solid red;
+}
+
+.buttonInfo {
+  display: flex;
+  background-color: aquamarine;
+  border: 3px solid blue;
+}
+
+.popup_add_pos {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+/*============================================================================*/
+/*===================================POPUP====================================*/
+/*============================================================================*/
+/* CONTAINER */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+/* ACTUAL POPUP */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #777;
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+/* POP UP ARROW */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+/* HIDE AND SHOW */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 3s;
+  animation: fadeIn 3s
+}
+/* ADD ANIMATION */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+
+/*============================================================================*/

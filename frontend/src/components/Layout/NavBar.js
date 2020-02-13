@@ -28,6 +28,13 @@ const NavBar = ({ currentUser, logout }) => {
       <li className="nav-item">
         <NavLink
           className="nav-link"
+          exact to="/home">
+            Home
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink
+          className="nav-link"
           to="/contacts">
             Contacts
         </NavLink>
@@ -46,11 +53,13 @@ const NavBar = ({ currentUser, logout }) => {
   return (
     <nav>
       <div className="top_container">
-            <strong>3-D Objects App</strong> <br/>
-            by Harold <br/>
-            hujikolp1@github.com <br/> 
+        <strong>3-D Objects App </strong> <br/>
+        haroldSoftware@github.com <br/>
       </div>
-      <div className="collapse navbar-collapse">
+      <div>
+        <br/>
+      </div> 
+      <div className="navbar_collapse">
         <ul className="navbar_authlinks">
           { currentUser ? authLinks : links }
         </ul>

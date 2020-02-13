@@ -7,8 +7,6 @@ const endPointObjects = `http://localhost:3300/three_D_objs`;
 
 class FetchModel {
 
-//============================================================================//
-
   static all = () => {
     return fetch(endPointHome)
       // return a promise with response.json() that we can use to load todos from the DB in frontend components
