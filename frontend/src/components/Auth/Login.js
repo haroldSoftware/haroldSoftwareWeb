@@ -34,7 +34,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="login_comp">
 
         <section
           id="login"
@@ -67,7 +67,7 @@ class Login extends Component {
             <button type="submit" className="submit_login">Login</button>
           </form>
         </section>
-        
+
       </div>
     );
   };

@@ -2,100 +2,152 @@
 
 import React from 'react';
 import FetchModel from '../../models/fetchModel';
+import Popup from '../Popup/Popup';
+
+const THREE = require('three');
+const OrbitControls = require('three-orbitcontrols');
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-const THREE = require('three')
-const OrbitControls = require('three-orbitcontrols')
+class Profile extends React.Component {
 
-const Profile = (props) => {
 
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//========================THREE_JS_SET_UP=======================================
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//==============================================================================
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(
-    45, window.innerWidth/window.innerHeight, 1, 10000
-  );
-  var renderer = new THREE.WebGLRenderer();
 
-  var controls = new THREE.OrbitControls( camera, renderer.domElement );
+  componentDidMount() {
 
-  renderer.setSize( window.innerWidth, window.innerHeight );
-
-  document.body.appendChild( renderer.domElement );
+    const width = 500;
+    const height = 500;
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.PerspectiveCamera(75,width / height,0.1,1000);
+    this.camera.position.y = 10;
+    this.camera.position.z = 20;
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.setClearColor('#000000');
+    this.renderer.setSize(width, height)
+    this.mount.appendChild(this.renderer.domElement)
+    let camera = this.camera;
+    let renderer = this.renderer;
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+//==============================================================================
+    const geometry1 = new THREE.BoxGeometry(1, 1, 1)
+    const material1 = new THREE.MeshBasicMaterial({ color: '#433F81'     })
+    this.cube1 = new THREE.Mesh(geometry1, material1)
+    this.cube1.position.set(0,25,0);
+    this.scene.add(this.cube1)
+//==============================================================================
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //===========================GRID_LINES=========================================
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  var lines = new THREE.Geometry();
-  var line_material = new THREE.LineBasicMaterial({color:'white'});
-  var size = 10000, step = 16;
-  for (var i = -size; i <= size; i+= step) {
-    lines.vertices.push(new THREE.Vector3(-size, -0.004, i)); // -0.004
-    lines.vertices.push(new THREE.Vector3(size, -0.004, i)); // -0.004
+    var lines = new THREE.Geometry();
+    var line_material = new THREE.LineBasicMaterial({color:'white'});
+    var size = 10000, step = 16;
+    for (var i = -size; i <= size; i+= step) {
+      lines.vertices.push(new THREE.Vector3(-size, -0.004, i)); // -0.004
+      lines.vertices.push(new THREE.Vector3(size, -0.004, i)); // -0.004
 
-    lines.vertices.push(new THREE.Vector3(i, -0.004, -size)); // -0.004
-    lines.vertices.push(new THREE.Vector3(i, -0.004, size)); // -0.004
+      lines.vertices.push(new THREE.Vector3(i, -0.004, -size)); // -0.004
+      lines.vertices.push(new THREE.Vector3(i, -0.004, size)); // -0.004
+    }
+    var line = new THREE.Line(lines, line_material, THREE.LineSegments);
+    this.scene.add(line)
+
+//==============================================================================
+
+    var geometry2 = new THREE.BoxGeometry( 10, 10, 10 );
+    var material2 = new THREE.MeshBasicMaterial( { color: 0xbf3232 } );
+    var cube2 = new THREE.Mesh( geometry2, material2 );
+    this.scene.add( cube2 );
+    cube2.position.set(50,50,50)
+
+//==============================================================================
+
+    this.start()
   }
-  var line = new THREE.Line(lines, line_material, THREE.LineSegments);
-  scene.add(line)
+   // ends componentDidMount()
+  componentWillUnmount(){
+    this.stop()
+    this.mount.removeChild(this.renderer.domElement)
+  }
+  start = () => {
+    if (!this.frameId) {
+      this.frameId = requestAnimationFrame(this.animate)
+    }
+  }
+  stop = () => {
+    cancelAnimationFrame(this.frameId)
+  }
+  animate = () => {
+   this.cube1.rotation.x += 0.01
+   this.cube1.rotation.y += 0.01
+   this.renderScene()
+   this.frameId = window.requestAnimationFrame(this.animate)
+  }
+  renderScene = () => {
+    this.renderer.render(this.scene, this.camera)
+  }
+
+//==============================================================================
+
+
+
+
+
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//============================CUBE==============================================
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  var geometry = new THREE.BoxGeometry( 10, 10, 10 );
-  var material = new THREE.MeshBasicMaterial( { color: 0x00ffff } );
-  var cube = new THREE.Mesh( geometry, material );
-  cube.position.set(-50,200,200);
-  scene.add( cube );
+  state = {
 
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//============================CUBE_2============================================
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  var geometry2 = new THREE.BoxGeometry( 10, 10, 10 );
-  var material2 = new THREE.MeshBasicMaterial( { color: 0xbf3232 } );
-  var cube2 = new THREE.Mesh( geometry2, material2 );
-  scene.add( cube2 );
-  cube2.position.set(50,50,50);
-
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  var cylinder_geometry = new THREE.CylinderGeometry(5,5,20,30);
-  var cylinder_material = new THREE.MeshBasicMaterial({color: 0xffffff});
-  var cylinder = new THREE.Mesh(geometry, material);
-  scene.add(cylinder);
-
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//================================CAMERA========================================
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  camera.position.z = 5;
-  camera.position.set( 0, 20, 100 );
-  controls.update();
-
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//===================================ANIMATE====================================
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  var animate = function () {
-    requestAnimationFrame( animate );
-    cube.rotation.x += 0.005;
-    cube.rotation.y += 0.005;
-    renderer.render( scene, camera );
   };
 
-  animate();
+  constructor(props) {
+    super(props);
+    this.state = { showPopup: false };
+  }
+
+  togglePopup = (event) => {
+    event.preventDefault();
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  nullFunc = (event) => {
+    event.preventDefault();
+    return null;
+  }
+
+  popUpFunc = (event) => {
+    event.preventDefault();
+    let popup = document.getElementById("myPopUp");
+    popup.popuptext.toggle("show");
+  }
+
+  resetComponent = (event) => {
+    event.preventDefault();
+    this.camera.position.x = 3;
+    this.camera.position.y = 8;
+    this.camera.position.z = 50;
+    this.camera.rotation.x = 0;
+    this.camera.rotation.y = 0;
+    this.camera.rotation.z = 0;
+  }
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  nullFunc = (event) => {
+    event.preventDefault();
+    return null;
+  }
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //=================================RANDOM_COLOR=================================
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  let randoColo = () => {
+  randoColo = () => {
     return parseInt('0x' + (function co(lor) {
       return (lor += [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
         [Math.floor(Math.random()*16)])
@@ -104,7 +156,7 @@ const Profile = (props) => {
     );
   }
 
-  function getRandomColor() {
+  getRandomColor = () => {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
@@ -117,7 +169,7 @@ const Profile = (props) => {
 //================================EVENT_FUNCTION================================
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  let addRandom = (event) => {
+  addRandom = (event) => {
     event.preventDefault();
     for (let i = 0; i < 20; i++) {
       let rando_pos_neg = Math.random() < 0.5 ? -1 : 1;
@@ -131,7 +183,7 @@ const Profile = (props) => {
       let z_pos = Math.floor(Math.random() * Math.floor(300));
 
       let rando_geo = new THREE.CubeGeometry(x_size, y_size, z_size);
-      let rando_mat = new THREE.MeshBasicMaterial({color: getRandomColor()});
+      let rando_mat = new THREE.MeshBasicMaterial({color: this.getRandomColor()});
       let rando_mesh = new THREE.Mesh(rando_geo, rando_mat);
       rando_mesh.position.set(
         x_pos * rando_pos_neg,
@@ -139,60 +191,86 @@ const Profile = (props) => {
         z_pos * rando_pos_neg
       );
 
-      scene.add(rando_mesh);
+      this.scene.add(rando_mesh);
     }
-  }
-
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  let nullFunc = (event) => {
-    event.preventDefault();
-    return null;
-  }
-
-  let popUpFunc = (event) => {
-    event.preventDefault();
-    let popup = document.getElementById("myPopUp");
-    popup.popuptext.toggle("show");
   }
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //===========================REACT_COMPONENT_RENDERING==========================
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  return (
+  render() {
+    return (
+      <div>
+      <div>
+        <div
+          className="home3D"
 
-    <div>
-      <div className="profileInfo">
-
-        <div className="userInfo">
-          <p><strong>Username:</strong> {props.user.username}</p>
-          <p><strong>Email:</strong> {props.user.email}</p>
+          ref={(mount) => { this.mount = mount }}
+        >
         </div>
-        <br/>
-
-        <form className="buttonInfo">
-
-          <button onClick={addRandom}>
-            Add Random
+        <span className="buttonBarHome3D">
+          <button onClick={this.resetComponent}>
+            Reset
           </button>
-          <button className="popup_add_pos" onClick={nullFunc}>
-            Add Position
-          </button>
-          <div className="popup" onClick={popUpFunc}>
-            [PopUp Click Here]
-            <span className="popuptext" id="myPopup">
-              PopUp Info Here !!!
-            </span>
-          </div>
+        </span>
+      </div>
+      <div>
+        <div className="profileInfo">
 
-        </form>
-        <br/>
+          <form>
+            <button onClick={this.addRandom}>
+              Add Random Cubes
+            </button>
+
+          </form>
+          <br/>
+
+          {this.state.showPopup ?
+            <Popup
+            text='This Is Your Pop Up Component'
+            closePopup={this.togglePopup}
+            />
+            : null
+          }
+
+        </div>
+      </div>
+
+        <div className="enterObj">
+          <label>Top Text</label>
+          <input type="text" placeholder="type...">
+          </input> <br/>
+
+          <label>Bottom Text</label>
+          <input type="text" placeholder="type...">
+          </input> <br/>
+
+          <label>Animation</label>
+          <select>
+                  <option value="Stay Still">Stay Still</option>
+                  <option value="Spin">Spin</option>
+                  <option value="Grow and Shrink">Grow and Shrink</option>
+                  <option value="Rotate">Rotate</option>
+          </select> <br/>
+
+          <label>Color</label>
+          <select>
+                  <option value="Red">Red</option>
+                  <option value="Green">Green</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Random">Random</option>
+          </select> <br/>
+
+          <button><strong>Add Object</strong></button>
+        </div>
 
       </div>
-    </div>
 
-  );
+    );
+  }
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 };
 

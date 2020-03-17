@@ -22,12 +22,21 @@ class App extends Component {
     localStorage.setItem('uid', token);
   };
 
+//==============================================================================
+//============================Web_Logout_Routes=================================
+//==============================================================================
+/*
+  window.location.href = 'http://haroldSoftware.com/';
+  this.props.history.push('http://haroldSoftware.com/');
+*/
+//==============================================================================
+
   logout = () => {
     // handle logout
     localStorage.removeItem('uid');
     this.setState({ currentUser: null });
     window.location.href = '/login';
-    // this.props.history.push('/login');
+    this.props.history.push('/login');
   };
 
 //==============================================================================

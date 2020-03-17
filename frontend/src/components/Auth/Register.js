@@ -38,7 +38,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className="register_comp">
         <section
           id="register"
           className="register_section"
@@ -99,11 +99,6 @@ class Register extends Component {
           </form>
 
         </section>
-        <div className="register_background">
-          <img
-            src={require('./background.jpg')}
-          />
-        </div>
       </div>
     );
   };

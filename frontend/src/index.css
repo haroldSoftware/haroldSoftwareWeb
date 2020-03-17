@@ -2,15 +2,110 @@
 /*============================================================================*/
 /*============================================================================*/
 
-.top_container {
-  text-align: center;
-  border: 5px solid black;
+html {
+  background-color: BlueViolet;
 }
 
-.navbar_collapse {
-  text-align: center;
-  border: 3px solid yellow;
+.harold_software {
+  font-size: 40px;
 }
+
+.top_links {
+  overflow: hidden;
+  background-color: ForestGreen;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.top_links a {
+  float: left;
+  font-size: 18px;
+  color: Gold;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.top_links a:hover {
+  background-color: LightCoral;
+}
+
+/*============================================================================*/
+
+.top_container {
+  text-align: center;
+  /*
+  border: 5px solid black;
+  */
+}
+
+/*============================================================================*/
+
+.nav_links {
+  overflow: hidden;
+  background-color: #333;
+  /* width: 50%; */
+  text-align: center;
+  margin: 0 auto;
+}
+
+.nav_links a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.nav_links a:hover {
+  background-color: red;
+}
+
+/*============================================================================*/
+
+.auth_links {
+  overflow: hidden;
+  background-color: #333;
+  /* width: 50%; */
+  text-align: center;
+  margin: 0 auto;
+}
+
+.auth_links a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.auth_links a:hover {
+  background-color: red;
+}
+
+/*============================================================================*/
+
+.auth_links_logout {
+  color: white;
+}
+
+/*============================================================================*/
+
+.controls_title {
+  font-size: 30px;
+  border: 3px solid GhostWhite;
+}
+
+.controls_text {
+  text-align: center;
+  border: 3px solid GhostWhite;
+  width: 400px;
+}
+
+/*============================================================================*/
 
 .home_tag {
   text-align: center;
@@ -30,11 +125,50 @@
 }
 
 /*============================================================================*/
+/*===============================Auth_Comps===================================*/
 /*============================================================================*/
+
+.register_comp {
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
+/*============================================================================*/
+
+.login_comp {
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
+/*============================================================================*/
+/*================================About_Comp==================================*/
+/*============================================================================*/
+
+.about_comp {
+  font-size: 25px;
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
+/*============================================================================*/
+/*================================Enter_Obj===================================*/
+/*============================================================================*/
+
+.enterObj {
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
+/*============================================================================*/
+/*==============================Profile_Info==================================*/
 /*============================================================================*/
 
 .profileInfo {
-  text-align: center;
+
 }
 
 .userInfo {
@@ -55,6 +189,7 @@
 /*============================================================================*/
 /*===================================POPUP====================================*/
 /*============================================================================*/
+
 /* CONTAINER */
 .popup {
   position: relative;
@@ -104,6 +239,14 @@
   to {opacity: 1;}
 }
 
+/*============================================================================*/
+/*=============================HTML_Footer====================================*/
+/*============================================================================*/
 
+.social_media {
+  font-size: 40px;
+  margin: auto;
+  width: 50%;
+}
 
 /*============================================================================*/

@@ -1,6 +1,12 @@
+//==============================================================================
 import React, { Component } from 'react';
 import Profile from '../components/Profile/Profile';
 import FetchModel from '../models/fetchModel';
+//==============================================================================
+
+//==============================================================================
+//==============================================================================
+//==============================================================================
 
 class ProfileContainer extends Component {
   state = {
@@ -18,8 +24,6 @@ class ProfileContainer extends Component {
   };
 
   createdObjectsArray = [];
-
-//==============================================================================
 
   handleChange = (event) => {
     this.setState({
@@ -45,7 +49,7 @@ class ProfileContainer extends Component {
       this.setState({ error: err })
     });
     this.createdObjectsArray.push(this.state.createdObject);
-  }; 
+  };
 
 
 //==============================================================================
