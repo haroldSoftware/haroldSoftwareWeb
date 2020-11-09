@@ -1,6 +1,10 @@
+//==============================================================================
+
 import React from 'react';
 
 class Popup extends React.Component {
+
+//==============================================================================
 
   state = {
 
@@ -12,7 +16,7 @@ class Popup extends React.Component {
         <div>
           <h1>{this.props.text}</h1>
             <strong className="controls_title"> Controls </strong> <br/>
-            <div className="controls_text"> 
+            <div className="controls_text">
               Drag Left Mouse - Change Camera Rotation <br/>
               Drag Might Mouse - Change Camera Position <br/>
               Scroll - Zoom In and Out <br/>
@@ -26,5 +30,8 @@ class Popup extends React.Component {
   }
 }
 
+//==============================================================================
 
 export default Popup;
+
+//==============================================================================

@@ -1,5 +1,6 @@
 {
   "name": "harold_software",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

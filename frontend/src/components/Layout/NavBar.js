@@ -1,5 +1,9 @@
+//==============================================================================
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+//==============================================================================
 
 const NavBar = ({ currentUser, logout }) => {
   const links = (
@@ -34,7 +38,7 @@ const NavBar = ({ currentUser, logout }) => {
   );
 
   return (
-  
+
     <nav>
       <div className="top_container">
         <strong className="harold_software"> HAROLD SOFTWARE . COM </strong>
@@ -59,4 +63,8 @@ const NavBar = ({ currentUser, logout }) => {
   );
 };
 
+//==============================================================================
+
 export default NavBar;
+
+//==============================================================================

@@ -1,5 +1,9 @@
+//==============================================================================
+
 import React, { Component } from 'react';
 import FetchModel from '../../models/fetchModel';
+
+//==============================================================================
 
 class Register extends Component {
   state = {
@@ -65,7 +69,8 @@ class Register extends Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.handleChange}
-                className="form-control form-control-lg" placeholder="@.com"
+                className="form-control form-control-lg"
+                placeholder="@.com"
               />
             </div>
             <div className="form-group">
@@ -104,4 +109,8 @@ class Register extends Component {
   };
 };
 
+//==============================================================================
+
 export default Register;
+
+//==============================================================================
