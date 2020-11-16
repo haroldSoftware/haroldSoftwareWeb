@@ -1,6 +1,9 @@
 # haroldSoftwareWeb
-Full Stack App built with React JS, Node, Express, Three JS, and SQL <br> 
+Full Stack App <br> 
 Used to create 3D objects, import and export 3D files, and edit your objects <br> 
+# Technology Used
+React JS, Node, Express, Three JS, and SQL <br> 
+Authentication uses bcrypt and JWT <br> 
 ## Install dependencies
 Navigate to both backend and frontend directories and run for both <br>
 $ npm i 
