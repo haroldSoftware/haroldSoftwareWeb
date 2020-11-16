@@ -12,6 +12,10 @@ import FetchModel from './models/fetchModel';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     currentUser: localStorage.getItem("uid"), 
     windowHeight: undefined, 
@@ -61,10 +65,12 @@ class App extends Component {
   }
 
   render () {
+    
     if (this.state.windowWidth > 500 && this.state.windowWidth) {
       return (
-        <>    
+        <>
           <NavBar
+            windowWith={this.state.windowWidth}
             currentUser={this.state.currentUser}
             logout={this.logout}
           />     
@@ -79,12 +85,19 @@ class App extends Component {
     } 
     else {
       return (
-        <div className="container">
-        <Routes
-          currentUser={this.state.currentUser}
-          setCurrentUser={this.setCurrentUser}
-        />
-      </div>
+        <>
+          <NavBar
+            windowWith={this.state.windowWidth}
+            currentUser={this.state.currentUser}
+            logout={this.logout}
+          />
+          <div className="container">
+            <Routes
+              currentUser={this.state.currentUser}
+              setCurrentUser={this.setCurrentUser}
+            />
+          </div>
+        </>
       )
     }
 

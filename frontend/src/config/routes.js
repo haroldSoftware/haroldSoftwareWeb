@@ -17,13 +17,16 @@ export default withRouter(({ setCurrentUser, currentUser, history }) => {
     )} />
   );
 
+  console.log("Routes ">>>currentUser)
+
   return (
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/login' render={() => <Login history={history} setCurrentUser={setCurrentUser} />} />
       <Route path='/register' component={Register} />
       <Route path='/about' component={About} />
-      <PrivateRoute path='/profile' component={ProfileContainer} />
+      {/* <PrivateRoute path='/profile' component={ProfileContainer} user={currentUser} /> */}
+      <ProfileContainer path='/profile' user={currentUser} />
     </Switch>
   );
 });

@@ -88,24 +88,24 @@ class FetchModel {
       .catch(err => console.error('Sorry no data here[fetch-login]', err));
   }
 
-//   static getUserInfo = (creds) => {
-//   return fetch(endPointLogin, {
-//     method: "GET",
-//     mode: "cors",
-//     headers: {
-//       'authorization': 'Bearer ${localstorage.uid}'
-//     },
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       this.setState({
-//         rowid: data.rowid,
-//         username: data.user[0].username,
-//         email: data.user[0].email
-//       })
-//     })
-//     .catch(err => console.error('Sorry no data here[login-info]', err));
-// }
+  static getUserInfo = (creds) => {
+  return fetch(endPointLogin, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      'authorization': 'Bearer ${localstorage.uid}'
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        rowid: data.rowid,
+        username: data.user[0].username,
+        email: data.user[0].email
+      })
+    })
+    .catch(err => console.error('Sorry no data here[login-info]', err));
+}
 
 //============================================================================//
 

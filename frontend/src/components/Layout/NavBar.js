@@ -6,34 +6,22 @@ import { NavLink } from 'react-router-dom';
 //==============================================================================
 
 const NavBar = ({ currentUser, logout }) => {
+
   const links = (
     <div className="nav_links">
-
       <NavLink exact to="/">Home</NavLink>
-
       <NavLink to="/login">Login</NavLink>
-
       <NavLink to="/register">Register</NavLink>
-
       <NavLink to="/about">About</NavLink>
-
     </div>
   );
 
   const authLinks = (
     <div className="auth_links">
-      <NavLink exact to="/profile">
-          Profile
-      </NavLink>
-
-      <NavLink
-        to="/contacts">
-          Contacts
-      </NavLink>
-
-      <div className="auth_links_logout" onClick={logout}>
-          Logout
-      </div>
+      <NavLink exact to="/profile"> Profile </NavLink>
+      <NavLink to="/contacts"> Contacts </NavLink>
+      
+      <button className="auth_links_logout" onClick={logout}> Logout </button>
     </div>
   );
 

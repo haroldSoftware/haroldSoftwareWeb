@@ -8,6 +8,7 @@ html {
 
 .harold_software {
   font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 /*============================================================================*/
@@ -19,9 +20,14 @@ html {
   justify-content: center; 
   overflow: hidden;
   background-color: rgb(141, 228, 141);
-  width: 50%;
+  width: 100%;
   text-align: center;
   margin: 0 auto;
+  
+}
+
+.top_links > * {
+  border: 2px solid black; 
 }
 
 .top_links a {
@@ -66,8 +72,9 @@ html {
 }
 
 /*============================================================================*/
-/*=============================AUTH_COMPONENT=================================*/
+/*===============================Auth_Comps===================================*/
 /*============================================================================*/
+
 
 .auth_links {
   overflow: hidden;
@@ -90,23 +97,23 @@ html {
   background-color: red;
 }
 
+.register_comp {
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
+.login_comp {
+  border: 3px solid black;
+  width: 400px;
+  margin: auto;
+}
+
 /*============================================================================*/
 
 .auth_links_logout {
-  color: white;
-}
-
-/*============================================================================*/
-
-.controls_title {
-  font-size: 30px;
-  border: 3px solid GhostWhite;
-}
-
-.controls_text {
-  text-align: center;
-  border: 3px solid GhostWhite;
-  width: 400px;
+  color: black;
+  margin-top: 8px;
 }
 
 /*============================================================================*/
@@ -167,30 +174,13 @@ html {
 }
 
 /*============================================================================*/
-/*===============================Auth_Comps===================================*/
-/*============================================================================*/
-
-.register_comp {
-  border: 3px solid black;
-  width: 400px;
-  margin: auto;
-}
-
-/*============================================================================*/
-
-.login_comp {
-  border: 3px solid black;
-  width: 400px;
-  margin: auto;
-}
-
-/*============================================================================*/
 /*================================About_Comp==================================*/
 /*============================================================================*/
 
 .about_comp {
   text-align: center;
   font-size: 25px;
+  color: lightgrey;
   border: 3px solid black;
   width: 400px;
   margin: auto;
@@ -210,8 +200,8 @@ html {
 /*==============================Profile_Info==================================*/
 /*============================================================================*/
 
-.profileInfo {
-
+.profile_props {
+  color: lightgrey; 
 }
 
 .userInfo {
@@ -234,6 +224,18 @@ html {
 /*============================================================================*/
 
 /* CONTAINER */
+
+.controls_title {
+  font-size: 30px;
+  border: 3px solid GhostWhite;
+}
+
+.controls_text {
+  text-align: center;
+  border: 3px solid GhostWhite;
+  width: 400px;
+}
+
 .popup {
   position: relative;
   display: inline-block;

@@ -11,6 +11,15 @@ const OrbitControls = require('three-orbitcontrols');
 
 class Profile extends React.Component {
 
+  state = {
+    user: this.props.currentUser
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { showPopup: false };
+  }
+
 
 //==============================================================================
 
@@ -98,15 +107,6 @@ class Profile extends React.Component {
 
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-  state = {
-
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { showPopup: false };
-  }
 
   togglePopup = (event) => {
     event.preventDefault();
@@ -202,13 +202,12 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-      <span>
+      <span className="profile_props">
         <br/>
-        <text className="welcomeBack"> WELCOME BACK </text> <br/> <br/>
-        Username: <br/> <br/>
+        <text className="welcomeBack"> <strong>WELCOME BACK</strong> </text> <br/> <br/>
+        <strong>Username:</strong> <br/><br/> {this.props.user} <br/><br/>
       </span>
       <div>
-        <text className="threeJSCanvas"> Three JS Canvas </text> <br/> <br/>
         <div
           className="home3D"
 

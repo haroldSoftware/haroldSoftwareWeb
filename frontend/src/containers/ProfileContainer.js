@@ -10,7 +10,7 @@ import FetchModel from '../models/fetchModel';
 
 class ProfileContainer extends Component {
   state = {
-    user: {},
+    user: this.props.user,
     newUser: {},
     x: "",
     y: "",
@@ -69,7 +69,7 @@ class ProfileContainer extends Component {
 
   render() {
     return <Profile
-            user={this.state.user}
+            user={this.props.user}
             handleCreateObject={this.handleCreateObject}
             handleChange={this.handleChange}
             state={this.state}
